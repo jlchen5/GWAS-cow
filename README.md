@@ -2,28 +2,28 @@
 
 ## ➡️ GWAS全基因组关联分析全流程教程：
 
-[1.GWAS：原理与目的](https://www.jianshu.com/p/e060c55283c4)  
-[2.GWAS：流程与试验设计](https://www.jianshu.com/p/2949f17715b6)  
-[3.1 GWAS：表型鉴定与记录的基本原则和原始数据处理](https://www.jianshu.com/p/eb893d4fe177)  
-[3.2 GWAS：最佳线性无偏估计量——BLUE值计算（多年单点有重复）](https://www.jianshu.com/p/f4f1b5b75830)  
-[3.4 GWAS：遗传力计算](https://www.jianshu.com/p/d116831897a2)  
-[4. 标记的开发和分型](https://www.jianshu.com/p/f0464a1afaeb)  
-[4.2 基因型数据描述性统计](https://www.jianshu.com/p/5b4a9566eee7)  
-[5. GWAS：群体结构——Admixture](https://www.jianshu.com/p/ef1c8dcddf96)  
-[6. GWAS：主成分分析——GCTA](https://www.jianshu.com/p/933eefea3fcc)  
-[7.1 GWAS：系统进化树——MEGA](https://www.jianshu.com/p/5a969bcdc1fe)  
-[7.2 GWAS：系统进化树美化——ITOL](https://www.jianshu.com/p/6081dda6445f)  
-[8. GWAS：亲缘关系——TASSEL&GCTA](https://www.jianshu.com/p/b24ba1d50448)  
-[9.1 GWAS：关联分析](https://www.jianshu.com/p/a22c72af4dea)  
-[9.2 GWAS：关联分析——TASSEL（GLM/MLM/CMLM)](https://www.jianshu.com/p/22edbe46bf7d)  
-[9.3 GWAS：关联分析——EMMAX](https://www.jianshu.com/p/0f39ff5a7643)  
-[9.4 GWAS：显著性阈值确定——GEC](https://www.jianshu.com/p/055daa26d5c6)  
-[9.5 GWAS显著SNP筛选及曼哈顿图绘制](https://www.jianshu.com/p/e8e88c54966d)  
-[10.GWAS：LD decay(LD衰减）—— PopLDdecay](https://www.jianshu.com/p/50a9c66fbd2a)  
-[11.GWAS：确定候选区间](https://www.jianshu.com/p/905bf1f3a798)  
-[12.GWAS：候选基因挖掘](https://www.jianshu.com/p/bc836e179347)  
-[CMplot报错missing value where TRUE/FALSE needed](https://www.jianshu.com/p/19784fa6bbdd)  
- 
+[1.GWAS：原理与目的](https://www.jianshu.com/p/e060c55283c4)
+[2.GWAS：流程与试验设计](https://www.jianshu.com/p/2949f17715b6)
+[3.1 GWAS：表型鉴定与记录的基本原则和原始数据处理](https://www.jianshu.com/p/eb893d4fe177)
+[3.2 GWAS：最佳线性无偏估计量——BLUE值计算（多年单点有重复）](https://www.jianshu.com/p/f4f1b5b75830)
+[3.4 GWAS：遗传力计算](https://www.jianshu.com/p/d116831897a2)
+[4. 标记的开发和分型](https://www.jianshu.com/p/f0464a1afaeb)
+[4.2 基因型数据描述性统计](https://www.jianshu.com/p/5b4a9566eee7)
+[5. GWAS：群体结构——Admixture](https://www.jianshu.com/p/ef1c8dcddf96)
+[6. GWAS：主成分分析——GCTA](https://www.jianshu.com/p/933eefea3fcc)
+[7.1 GWAS：系统进化树——MEGA](https://www.jianshu.com/p/5a969bcdc1fe)
+[7.2 GWAS：系统进化树美化——ITOL](https://www.jianshu.com/p/6081dda6445f)
+[8. GWAS：亲缘关系——TASSEL&GCTA](https://www.jianshu.com/p/b24ba1d50448)
+[9.1 GWAS：关联分析](https://www.jianshu.com/p/a22c72af4dea)
+[9.2 GWAS：关联分析——TASSEL（GLM/MLM/CMLM)](https://www.jianshu.com/p/22edbe46bf7d)
+[9.3 GWAS：关联分析——EMMAX](https://www.jianshu.com/p/0f39ff5a7643)
+[9.4 GWAS：显著性阈值确定——GEC](https://www.jianshu.com/p/055daa26d5c6)
+[9.5 GWAS显著SNP筛选及曼哈顿图绘制](https://www.jianshu.com/p/e8e88c54966d)
+[10.GWAS：LD decay(LD衰减）—— PopLDdecay](https://www.jianshu.com/p/50a9c66fbd2a)
+[11.GWAS：确定候选区间](https://www.jianshu.com/p/905bf1f3a798)
+[12.GWAS：候选基因挖掘](https://www.jianshu.com/p/bc836e179347)
+[CMplot报错missing value where TRUE/FALSE needed](https://www.jianshu.com/p/19784fa6bbdd)
+
 
 
 ## ➡️ 分析数据结构
@@ -381,39 +381,92 @@ VCF2Dis -i finalSNP_filtered_rename.vcf -o finalSNP.mat
   | R253789 | R253789 | 1      |
   | Q007402 | Q007402 | 1      |
 
-- 可视化：曼哈顿图和qq图
+  
 
-  ```
-  # 加载包
-  library(qqman)
-  library(CMplot)
+
+
+### 绘制曼哈顿和qq图、筛选显著SNP区域
+
+> threshold: 1/nrow(df[!is.na(df$BP),]) = 7.870014e-08
+
+```
+library(qqman)
+library(CMplot)
+
+setwd("/Volumes/Newsmy/XJKPS162024016_KPS202412104-450例牛-全基因组重测序/analysis_result/")
+
+# 定义要处理的文件列表
+gwas_files <- c("gwas_guanwei.assoc.linear",
+                "gwas_weight.assoc.linear",
+                "gwas_height.assoc.linear",
+                "gwas_bust.assoc.linear",
+                "gwas_oxhorn.assoc.logistic")
+
+for (file in gwas_files) {
+  # 从文件名中提取性状名称
+  trait <- sub("gwas_(.*)\\.assoc\\..*", "\\1", file)
   
-  ### 读取结果文件:
-  #### gwas_guanwei.assoc.linear
-  #### gwas_weight.assoc.linear
-  #### gwas_height.assoc.linear
-  #### gwas_bust.assoc.linear
-  #### gwas_oxhorn.assoc.logistic
+  # 读取数据
+  gwas_results <- read.table(file, header = TRUE)
   
-  setwd("/Volumes/Newsmy/XJKPS162024016_KPS202412104-450例牛-全基因组重测序/analysis_result/")
-  gwas_results <- read.table("gwas_weight.assoc.linear", header=TRUE)
+  # 数据预处理
   gwas_results$CHR <- as.numeric(gwas_results$CHR)
   gwas_results$SNP <- paste0("chr", gwas_results$CHR, "_", gwas_results$BP)
+  df <- gwas_results[, c("SNP", "CHR", "BP", "P")]
   
-  # QQ图
-  # qq(gwas_results$P)
+  # 计算Bonferroni阈值
+  # threshold <- 1/nrow(df[!is.na(df$BP), ])  # 7.870014e-08
+  threshold <- 1e-5  # 阈值使用通用阈值，扩大范围
   
-  # manhattan图
-  df <- gwas_results[,c("SNP", "CHR", "BP", "P")]
+  # 筛选显著SNP
+  sig_snps <- subset(df, P <= threshold)
   
-  # 画图
-  threshold <- 1/nrow(df[!is.na(df$BP),])
+  # 保存显著结果
+  write.csv(sig_snps, 
+            file = paste0("sig_", trait, ".csv"), 
+            row.names = FALSE)
   
-  CMplot(df, threshold = threshold ,
-         amplify = F, file = "png", plot.type=c("m","q"))
-  ```
+  # 生成曼哈顿图和QQ图
+  CMplot(df,plot.type = c("m", "q"),
+         threshold = threshold,
+         threshold.col = c("red", "blue"),
+         threshold.lty = c(1, 2),
+         amplify = FALSE,file = "png",
+         file.name = paste0(trait, "_"),dpi = 300,
+         verbose = TRUE)}
+```
 
-  
+
+
+
+
+### 显著性区域提取
+
+~~~
+ls *csv
+sig_bust.csv    sig_guanwei.csv sig_height.csv  sig_oxhorn.csv  sig_weight.csv
+
+cat sig_bust.csv sig_guanwei.csv sig_height.csv  sig_weight.csv | awk -F, 'FNR > 1 {gsub(/"/, "", $1); print $1}' | sort | uniq -c | awk '$1 >=3 {print $2}'  > common_snps.txt
+~~~
+
+
+
+### 提取与性状相关区域gene
+
+```
+# 查看牛基因组基因位置
+cat bosTau9.refGene.gtf |cut -f 1,4,5,9 |sed 's/;/\t/g'|cut -f 1-4 |sed 's/gene_id//'|sed 's/"//g'  > bosTau9.refGene.bed
+# 注释四个性状相关基因位点
+bedtools intersect -a common_snps.bed -b bosTau9.refGene.bed -wo > common_snps_anno.txt
+
+# 获取oxhorn显著区域
+cat sig_oxhorn.csv|sed 's/"//g' |sed '1d'|sed 's/,/\t/'| sed 's/_/\t/' |cut -f 1-2 |awk '{print $1"\t"$2"\t"$2+1}' > oxhorn_snps.bed
+
+# 注释oxhorn显著区域
+bedtools intersect -a oxhorn_snps.bed -b bosTau9.refGene.bed -wo  >oxhorn_snps_anno.txt
+```
+
+
 
 ## 8 亲缘关系计算
 
@@ -438,4 +491,103 @@ run_pipeline.pl -Xmx32g -Xms512m -importGuess finalSNP_gwas_filtered.vcf -Kinshi
   ```
 
   
+
+## 9 群体结构计算
+
+```
+## 在plink中将vcf文件转换成admixture所需的.ped或.bed格式:
+plink --vcf finalSNP_gwas_filtered.vcf --allow-extra-chr --recode12 --out finalSNP_gwas_filtered_recode12 --chr-set 29
+
+
+for i in {1..10};do (nohup admixture -j10 --cv finalSNP_gwas_filtered_recode12.ped $i|tee out${i} &);done
+
+# fine the minimum value
+for i in {1..10};do grep -h CV out${i} ; done
+
+CV error (K=1): 0.21238
+```
+
+
+
+## 10 LD衰减
+
+- PopLDdecay是一款基于VCF文件，快速、高效计算连锁不平衡的工具。
+
+~~~
+PopLDdecay -InVCF  finalSNP_gwas_filtered.vcf  -OutStat finalSNP_gwas_filtered_LDdecay
+~~~
+
+> -InVCF：输入vcf文件路径及文件名
+>
+> -OutStat：输出压缩文件前缀
+>
+> 输出文件中为LD衰减的计算结果，包括平均R2，平均D'等。
+
+### 10.1 绘制LD decay图
+
+软件自带一个perl的脚本，直接调用就可以，但是绘图依赖于R，需要保证环境中已经添加好R。
+
+将上一步计算得到的LD decay结果导入，进行衰减图绘制。
+
+```
+Plot_OnePop.pl  -inFile  finalSNP_gwas_filtered_LDdecay.stat.gz  -output  LDdecay_Fig
+```
+
+
+
+
+
+## 11 表型统计和正态性检验
+
+```
+# 加载必要的包
+library(ggplot2)
+library(gridExtra)
+library(ggpubr)
+
+# 1. 数据准备
+
+df <- read.csv("pheno_all.csv",header = T) 
+
+# 2. 绘制组合图表函数
+plot_combined <- function(var_name) {
+  # 直方图+密度曲线
+  p1 <- ggplot(df, aes(x = .data[[var_name]])) +
+    geom_histogram(aes(y = ..density..),
+                   bins = 15,
+                   fill = "skyblue",
+                   color = "black") +
+    geom_density(color = "red", linewidth = 1) +
+    labs(title = paste(var_name, "distribution"), x = var_name)
+  
+  # QQ图
+  p2 <- ggqqplot(df, x = var_name, color = "blue") +
+    labs(title = paste(var_name, "QQ plot"))
+  
+  grid.arrange(p1, p2, ncol = 2)
+}
+
+# 3. 选择需要分析的数值型变量（排除分类变量）
+numeric_vars <- c("age", "weight", "height", "bust", "guanwei")
+
+# 4. 生成所有数值变量的组合图
+combined_plots <- lapply(numeric_vars, plot_combined)
+
+# 5. 正态性检验
+shapiro_test <- function(var_name) {
+  test_result <- shapiro.test(df[[var_name]])
+  data.frame(
+    Variable = var_name,
+    W = round(test_result$statistic, 4),
+    p.value = format.pval(test_result$p.value, eps = 0.001)
+  )
+}
+
+# 执行检验并格式化结果
+normality_results <- do.call(rbind, lapply(numeric_vars, shapiro_test))
+print(normality_results)
+
+```
+
+
 
